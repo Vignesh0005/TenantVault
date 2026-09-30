@@ -1,0 +1,49 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: src/TenantVault.Api/Dockerfile
+    ports: ["5000:8080"]
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      # The API connects as the least-privilege role (created by the RLS migration), never as a superuser.
+      - ConnectionStrings__Default=Host=db;Database=tenantvault;Username=tenantvault_app;Password=app_pw
+      # Schema owner, used only to apply migrations at startup.
+      - ConnectionStrings__Migrations=Host=db;Database=tenantvault;Username=postgres;Password=postgres
+      - JWT_SECRET=super-secret-key-min-32-chars-long!!
+      - S3__ServiceUrl=http://localstack:4566
+      # Presigned URLs are opened by the browser, which reaches LocalStack via the published port.
+      - S3__PublicServiceUrl=http://localhost:4566
+      - S3__BucketName=tenantvault
+      - S3__AccessKey=test
+      - S3__SecretKey=test
+      - S3__ForcePathStyle=true
+    depends_on:
+      db:
+        condition: service_healthy
+      localstack:
+        condition: service_started
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: tenantvault
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports: ["5432:5432"]
+    volumes: ["db_data:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d tenantvault"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  localstack:
+    image: localstack/localstack:latest
+    ports: ["4566:4566"]
+    environment:
+      - SERVICES=s3
+      - DEFAULT_REGION=us-east-1
+
+volumes:
+  db_data:

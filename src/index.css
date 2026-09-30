@@ -1,0 +1,240 @@
+@tailwind base;
+@tailwind components;
+
+/*
+ * Dark theme: remaps the neutral/tinted palette the pages are built from.
+ * Placed before utilities so explicit `dark:` classes still win on equal specificity.
+ * Translucent white overlays (bg-white/5…/25) are left alone; they sit on already-dark surfaces.
+ */
+.dark body { background-color: rgb(2 6 23); color: rgb(226 232 240); }
+
+.dark .bg-white { background-color: rgb(15 23 42); }
+.dark .bg-white\/95 { background-color: rgb(15 23 42 / 0.95); }
+.dark .bg-white\/90 { background-color: rgb(15 23 42 / 0.9); }
+.dark .bg-white\/80 { background-color: rgb(15 23 42 / 0.8); }
+.dark .bg-white\/70 { background-color: rgb(15 23 42 / 0.7); }
+.dark .bg-slate-50 { background-color: rgb(2 6 23); }
+.dark .bg-slate-50\/80,
+.dark .bg-slate-50\/60 { background-color: rgb(30 41 59 / 0.45); }
+.dark .bg-slate-100 { background-color: rgb(30 41 59); }
+.dark .bg-slate-200 { background-color: rgb(51 65 85); }
+.dark .bg-slate-200\/70 { background-color: rgb(51 65 85 / 0.7); }
+.dark .bg-slate-300 { background-color: rgb(71 85 105); }
+.dark .bg-slate-900 { background-color: rgb(51 65 85); }
+
+.dark .bg-red-50 { background-color: rgb(127 29 29 / 0.25); }
+.dark .bg-red-50\/60 { background-color: rgb(127 29 29 / 0.15); }
+.dark .bg-red-100 { background-color: rgb(127 29 29 / 0.4); }
+.dark .bg-rose-50 { background-color: rgb(136 19 55 / 0.3); }
+.dark .bg-amber-50 { background-color: rgb(120 53 15 / 0.3); }
+.dark .bg-emerald-50 { background-color: rgb(6 78 59 / 0.35); }
+.dark .bg-emerald-50\/40 { background-color: rgb(6 78 59 / 0.15); }
+.dark .bg-emerald-100 { background-color: rgb(6 78 59 / 0.5); }
+.dark .bg-sky-50 { background-color: rgb(12 74 110 / 0.35); }
+.dark .bg-blue-50,
+.dark .bg-blue-50\/80 { background-color: rgb(30 58 138 / 0.35); }
+.dark .bg-blue-200\/40,
+.dark .bg-emerald-200\/40 { opacity: 0.35; }
+
+.dark .text-slate-900 { color: rgb(241 245 249); }
+.dark .text-slate-800 { color: rgb(226 232 240); }
+.dark .text-slate-700 { color: rgb(203 213 225); }
+.dark .text-slate-600 { color: rgb(148 163 184); }
+.dark .text-red-700,
+.dark .text-red-800,
+.dark .text-red-900 { color: rgb(252 165 165); }
+.dark .text-amber-700,
+.dark .text-amber-800 { color: rgb(252 211 77); }
+.dark .text-emerald-700,
+.dark .text-emerald-900 { color: rgb(110 231 183); }
+.dark .text-sky-700 { color: rgb(125 211 252); }
+.dark .text-blue-700 { color: rgb(147 197 253); }
+
+.dark .border-slate-100 { border-color: rgb(30 41 59); }
+.dark .border-slate-200,
+.dark .border-slate-200\/80,
+.dark .border-slate-200\/70,
+.dark .border-slate-200\/60 { border-color: rgb(51 65 85 / 0.7); }
+.dark .border-slate-300 { border-color: rgb(71 85 105); }
+.dark .border-red-100,
+.dark .border-red-200 { border-color: rgb(127 29 29 / 0.6); }
+.dark .border-amber-200 { border-color: rgb(120 53 15 / 0.6); }
+.dark .border-emerald-200 { border-color: rgb(6 78 59 / 0.7); }
+.dark .border-blue-200 { border-color: rgb(30 58 138 / 0.7); }
+
+.dark .divide-slate-100 > :not([hidden]) ~ :not([hidden]) { border-color: rgb(30 41 59); }
+.dark .divide-slate-200 > :not([hidden]) ~ :not([hidden]) { border-color: rgb(51 65 85); }
+
+.dark .ring-slate-100 { --tw-ring-color: rgb(30 41 59); }
+.dark .ring-slate-200 { --tw-ring-color: rgb(51 65 85); }
+.dark .ring-white { --tw-ring-color: rgb(15 23 42); }
+.dark .ring-red-200 { --tw-ring-color: rgb(127 29 29 / 0.7); }
+.dark .ring-amber-200 { --tw-ring-color: rgb(120 53 15 / 0.7); }
+.dark .ring-emerald-200 { --tw-ring-color: rgb(6 78 59 / 0.8); }
+.dark .ring-sky-200 { --tw-ring-color: rgb(12 74 110 / 0.8); }
+
+.dark .shadow-slate-200\/60 { --tw-shadow-color: rgb(0 0 0 / 0.4); }
+
+.dark .hover\:bg-white:hover,
+.dark .hover\:bg-slate-100:hover { background-color: rgb(30 41 59); }
+.dark .hover\:bg-slate-50:hover,
+.dark .hover\:bg-slate-50\/80:hover { background-color: rgb(30 41 59 / 0.6); }
+.dark .hover\:bg-red-50:hover { background-color: rgb(127 29 29 / 0.3); }
+.dark .hover\:text-slate-900:hover,
+.dark .hover\:text-slate-800:hover { color: rgb(255 255 255); }
+.dark .hover\:text-slate-700:hover { color: rgb(241 245 249); }
+.dark .hover\:border-slate-300:hover,
+.dark .hover\:border-slate-400:hover { border-color: rgb(100 116 139); }
+.dark .hover\:border-blue-200:hover { border-color: rgb(30 64 175); }
+.dark .disabled\:bg-slate-50:disabled { background-color: rgb(30 41 59 / 0.5); }
+
+.dark .card { background-color: rgb(15 23 42 / 0.75); border-color: rgb(51 65 85 / 0.6); }
+.dark .card:hover { border-color: rgb(71 85 105 / 0.8); --tw-shadow-color: rgb(0 0 0 / 0.5); }
+.dark .text-gradient {
+  background-image: linear-gradient(to right, rgb(248 250 252), rgb(var(--tv-accent)), rgb(248 250 252));
+}
+
+/* Short cross-fade when the theme is switched. */
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition: background-color 400ms ease, border-color 400ms ease, color 400ms ease, fill 400ms ease !important;
+}
+
+@tailwind utilities;
+
+:root {
+  /* Overwritten at runtime with the current tenant's accent (see lib/tenantColors). */
+  --tv-accent: 15 23 42;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 antialiased;
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-slate-200/80 bg-white/90 shadow-sm backdrop-blur-sm transition-[box-shadow,border-color,transform] duration-300;
+  }
+  .card:hover {
+    @apply border-slate-300/80 shadow-lg shadow-slate-200/60;
+  }
+
+  .card-lift {
+    @apply hover:-translate-y-1 hover:shadow-xl hover:shadow-accent/10;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-slate-900 via-accent to-slate-900 bg-[length:200%_auto] bg-clip-text text-transparent;
+  }
+
+  .accent-gradient {
+    background-image: linear-gradient(
+      135deg,
+      rgb(var(--tv-accent)) 0%,
+      rgb(var(--tv-accent) / 0.75) 45%,
+      rgb(15 23 42) 100%
+    );
+  }
+
+  .icon-chip {
+    @apply flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-accent/15 to-accent/5 text-accent ring-1 ring-inset ring-accent/15 transition-colors duration-500;
+  }
+
+  /* Children fade up one after another. */
+  .stagger > * {
+    animation: tv-fade-up 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .stagger > *:nth-child(1) { animation-delay: 0ms; }
+  .stagger > *:nth-child(2) { animation-delay: 60ms; }
+  .stagger > *:nth-child(3) { animation-delay: 120ms; }
+  .stagger > *:nth-child(4) { animation-delay: 180ms; }
+  .stagger > *:nth-child(5) { animation-delay: 240ms; }
+  .stagger > *:nth-child(6) { animation-delay: 300ms; }
+  .stagger > *:nth-child(7) { animation-delay: 360ms; }
+  .stagger > *:nth-child(8) { animation-delay: 420ms; }
+  .stagger > *:nth-child(9) { animation-delay: 480ms; }
+  .stagger > *:nth-child(n + 10) { animation-delay: 540ms; }
+}
+
+@keyframes tv-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes tv-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  opacity: 0.5;
+}
+
+/* Range slider: the filled part of the track is driven by --tv-fill (0–100%). */
+.tv-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    to right,
+    rgb(var(--tv-accent)) 0%,
+    rgb(var(--tv-accent)) var(--tv-fill, 0%),
+    rgb(226 232 240) var(--tv-fill, 0%),
+    rgb(226 232 240) 100%
+  );
+  outline: none;
+  cursor: pointer;
+}
+.tv-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 9999px;
+  background: white;
+  border: 3px solid rgb(var(--tv-accent));
+  box-shadow: 0 2px 8px rgb(var(--tv-accent) / 0.35);
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+.tv-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  background: white;
+  border: 3px solid rgb(var(--tv-accent));
+  box-shadow: 0 2px 8px rgb(var(--tv-accent) / 0.35);
+}
+.tv-range:hover::-webkit-slider-thumb,
+.tv-range:focus-visible::-webkit-slider-thumb {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 6px rgb(var(--tv-accent) / 0.15);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(203 213 225);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(148 163 184);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
